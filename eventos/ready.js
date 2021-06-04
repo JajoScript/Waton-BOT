@@ -5,7 +5,7 @@ module.exports = (cliente) => {
             game : {
                 name: 'WAWAWA',
                 url: null,
-                tpye: "PLAYING"
+                type: "PLAYING"
             }
         }
     );

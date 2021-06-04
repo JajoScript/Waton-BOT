@@ -1,7 +1,7 @@
 {
   "name": "wa-bot",
   "version": "0.0.1",
-  "description": "```env\r     DISCORD_TOKEN=<token bot>\r ```",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./bot.js"

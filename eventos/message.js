@@ -1,5 +1,5 @@
 // Importando configuraciones y dependencias.
-const usuarios = require("../usuarios.json");
+const usuarios = require("../configuraciones/usuarios.json");
 
 module.exports = (cliente, mensaje) => {
     // Captura de datos.
@@ -14,6 +14,7 @@ module.exports = (cliente, mensaje) => {
         mensaje.reply("Buenas noches!");
     }
 
+    // Reacciones.
     if (usuario_id == usuarios.Mauri.id || usuario_id == usuarios.Kapeo.id || usuario_id == usuarios.Gonzalo.id) {
         mensaje.react('🤡')
             .catch(error => console.log(error));
