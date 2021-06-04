@@ -1,0 +1,75 @@
+# Dependencias.
+node_modules/
+jspm_packages/
+
+# Variables de entorno.
+.env
+
+# Editor de codigo.
+.DS_Store
+.vscode
+
+# Registros.
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# datos Runtime.
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directorio para bibliotecas instrumentadas generadas por jscoverage / JSCover.
+lib-cov
+
+# Directorio de cobertura utilizado por herramientas como istanbul.
+coverage
+
+# Cobertura de pruebas nyc.
+.nyc_output
+
+# Almacenamiento intermedio Grunt (http://gruntjs.com/creating-plugins#storing-task-files).
+.grunt
+
+# Directorio de dependencias de Bower(https://bower.io/).
+bower_components
+
+# Configuración node-waf.
+.lock-wscript
+
+# Complementos binarios compilados (addons) (https://nodejs.org/api/addons.html).
+build/Release
+
+# Typescript.
+typings/
+
+# NPM cache.
+.npm
+
+# Eslint cache.
+.eslintcache
+
+# Historial del repositorio.
+.node_repl_history
+
+# Salida de 'npm pack'.
+*.tgz
+
+# Archivo de integridad de Yarn.
+.yarn-integrity
+
+# IDE-codeApps
+.idea/*
+*.iml
+*.sublime-*
+
+# Archivos modificados.
+.cache/
+yarn-error.log
+
+# Compilaciones.
+dist/
+.next/
