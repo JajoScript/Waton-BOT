@@ -19,7 +19,6 @@ module.exports = (cliente, mensaje) => {
         mensaje.react('🤡')
             .catch(error => console.log(error));
     }
-    
 
     // Filtros.
     if(!mensaje.content.startsWith(process.env.DISCORD_PREFIX || "*")) return;
