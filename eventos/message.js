@@ -15,7 +15,7 @@ module.exports = (cliente, mensaje) => {
     }
 
     // Reacciones.
-    if (usuario_id == usuarios.Mauri.id || usuario_id == usuarios.Kapeo.id || usuario_id == usuarios.Gonzalo.id) {
+    if (usuario_id == usuarios.Mauri.id || usuario_id == usuarios.Kapeo.id) {
         mensaje.react('🤡')
             .catch(error => console.log(error));
     }

@@ -7,8 +7,8 @@ module.exports = (cliente, messageReaction, usuario) => {
 
     let autor_id = messageReaction.message.author.id
     let autor_nombre = messageReaction.message.author.username
-    console.log(`[DEV] [${autor_id}] : ${autor_nombre}`)
 
+    console.log(`[DEV] [${autor_id}] : ${autor_nombre}`)
     if (autor_id == usuarios.Jajo.id){
         messageReaction.remove()
         console.log("[DEV] Se eliminaron las reacciones");
