@@ -1,4 +1,4 @@
-# WAbot
+# Waton-bot
 
 ## Funcionalidad
 ## Comandos
