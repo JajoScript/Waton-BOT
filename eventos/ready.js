@@ -3,7 +3,7 @@ module.exports = (cliente) => {
         {
             status: 'online',
             game : {
-                name: 'WAWAWA',
+                name: 'Estoy waton 🎵',
                 url: null,
                 type: "PLAYING"
             }
