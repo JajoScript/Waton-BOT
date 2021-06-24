@@ -1,46 +1,53 @@
 // Dependencias.
+const { Client } = require('discord.js');
 const {readdirSync, copyFileSync} = require('fs');
 
 // Definición clase: Controlador de archivos.
+
 class Controlador {
-    lector_comandos(cliente){
-        // Ciclo para leer los archivos contenedores de los comandos.
-        let iteracion = 0;
-        for (const archivo of readdirSync(`./comandos/`)){
-            // Filtro para leer archivos.
-            if (archivo.endsWith('.js')){
-                let nombre_archivo = archivo.substring(0, (archivo.length - 3));
-                let contenido_archivo = require(`./comandos/${archivo}`);
+    lector_comandos(Cliente){
+        // Leer y filtrar los archivos del directorio eventos.
+        const archivos_comandos = readdirSync('./comandos').filter(archivo => archivo.endsWith('.js'));
+        let numero_comandos = 0;
+        
+        // Ciclo para leer cada archivo del directorio.
+        for (const archivo of archivos_comandos){
+            // Cargando el archivo.
+            const comando = require(`./comandos/${archivo}`);
 
-                cliente.comandos.set(nombre_archivo, contenido_archivo);
-                iteracion++;
-                console.log(`[BOT] comando: ${nombre_archivo} cargado!`);
-            };
-        };
+            // Cargando el comando en la colección.
+            Cliente.comandos.set(comando.nombre, comando);
 
-        console.log(`[BOT] Comandos totales cargados: ${iteracion}`);
+            // Depuración.
+            console.log(`[BOT][COMMAND] Cargado el comando: ${comando.nombre}!`);
+            numero_comandos++;
+        }
+
+        console.log(`[BOT][COMMAND] Se cargaron ${numero_comandos} comandos!`);
     };
 
-    lector_eventos(cliente){
-        // Ciclo para leer los archivos contenedores de los eventos.
-        let iteracion = 0;
-        for (const archivo of readdirSync(`./eventos/`)){
-            // Filtro para leer archivos.
-            if (archivo.endsWith('.js')){
-                let nombre_archivo = archivo.substring(0, (archivo.length - 3));
-                let contenido_archivo = require(`./eventos/${archivo}`);
+    lector_eventos(Cliente){
+        // Leer y filtrar los archivos del directorio eventos.
+        const archivos_eventos = readdirSync('./eventos').filter(archivo => archivo.endsWith('.js'));
+        let numero_eventos = 0;
 
-                cliente.on(nombre_archivo, contenido_archivo.bind(null, cliente));
-                iteracion++;
-                console.log(`[BOT] Evento: ${nombre_archivo} cargado!`);
+        // Ciclo para leer cada archivo del directorio.
+        for (const archivo of archivos_eventos){
+            const evento = require(`./eventos/${archivo}`);
+            
+            // Separando los eventos de tipo "once".
+            if (evento.simple) {
+                Cliente.once(evento.nombre, (...args) => evento.ejecutar(...args, Cliente));
+                
+            } else {
+                Cliente.on(evento.nombre, (...args) => evento.ejecutar(...args, Cliente));
+            }
+            console.log(`[BOT][EVENTS] Cargado el evento: ${evento.nombre}!`);
+            numero_eventos++;
+        }
 
-                // Limpieza de cache.
-                delete require.cache[require.resolve(`./eventos/${archivo}`)];
-            };
-        };
-
-        console.log(`[BOT] Eventos totales cargados: ${iteracion}`);
-    };
+        console.log(`[BOT][EVENTS] Se cargaron ${numero_eventos} eventos!`);
+    }
 }
 
 // Exportación.

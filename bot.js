@@ -14,7 +14,7 @@ Cliente.comandos = new Discord.Collection();
 
 // Cargando comandos.
 let controlador = new Controlador
-// controlador.lector_comandos(Cliente);
+controlador.lector_comandos(Cliente);
 controlador.lector_eventos(Cliente);
 
 // Inicio de sesión.
