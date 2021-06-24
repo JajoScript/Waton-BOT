@@ -3,13 +3,12 @@ require("dotenv").config();
 
 // Dependencias.
 const Discord = require('discord.js');
-const {readdirSync} = require('fs');
 const Controlador = require("./controlador");
 
 // Instancias.
 const Cliente = new Discord.Client();
 
-// Colecciones
+// Colecciones.
 Cliente.comandos = new Discord.Collection();
 
 // Cargando comandos.

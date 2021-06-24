@@ -1,4 +1,5 @@
 // Importando configuraciones y dependencias.
+const { Message } = require("discord.js");
 const usuarios = require("../configuraciones/usuarios.json");
 
 module.exports = {
@@ -17,6 +18,14 @@ module.exports = {
             mensaje.reply("Buenos dias!");
         }else if(contenido.toLowerCase() == "gn"){
             mensaje.reply("Buenas noches!");
+        } else if(contenido.toLowerCase() == "te amo"){
+            mensaje.reply("Yo te amo más!");
+        } else if(contenido.toLowerCase() == "quien es tu dios?"){
+            mensaje.reply(`Watica es mi dios 🥵`);
+        } else if(contenido.toLowerCase() == "quien es tu creador?"){
+            mensaje.channel.send(`Mi creador es <@${usuarios.Jajo.id}>`);
+        } else if(contenido.toLowerCase() == "quien es el mas weon?"){
+            mensaje.reply(`El más weon es el <@${usuarios.Alonso.id}>`);
         }
         
         // Control para el rol de 'Payaso'.

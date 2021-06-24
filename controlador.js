@@ -1,9 +1,7 @@
 // Dependencias.
-const { Client } = require('discord.js');
-const {readdirSync, copyFileSync} = require('fs');
+const {readdirSync} = require('fs');
 
 // Definición clase: Controlador de archivos.
-
 class Controlador {
     lector_comandos(Cliente){
         // Leer y filtrar los archivos del directorio eventos.
