@@ -1,5 +1,4 @@
 // Importando configuraciones y dependencias.
-const { Message } = require("discord.js");
 const usuarios = require("../configuraciones/usuarios.json");
 
 module.exports = {
