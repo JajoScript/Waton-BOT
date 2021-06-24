@@ -23,7 +23,7 @@ Para ejecutar este proyecto, deberá agregar las siguientes variables de entorno
 
 `DISCORD_PREFIX`
 
-No se descarta que en un futuro se implementes más variables para el manejo de una base de datos.
+No se descarta que en un futuro se implementen más variables para el manejo de una base de datos.
 
 ---
 ## Ejecución de manera local
@@ -54,7 +54,7 @@ Iniciar la ejecución.
 ```
 
 ---
-## Authors
+## Autores
 
 El desarrollo de este proyecto a sido posible gracias a:
 
