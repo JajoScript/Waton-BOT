@@ -1,6 +1,6 @@
 {
 	"name": "waton-bot",
-	"version": "1",
+	"version": "1.0",
 	"description": "Proyecto independiente de un bot para Discord.",
 	"main": "bot.js",
 	"scripts": {
