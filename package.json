@@ -1,15 +1,15 @@
 {
-  "name": "waton-bot",
-  "version": "1",
-  "description": "Proyecto independiente de un bot para Discord.",
-  "main": "bot.js",
-  "scripts": {
-    "start": "node ./bot.js"
-  },
-  "author": "JajoScript",
-  "license": "MIT",
-  "dependencies": {
-    "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
-  }
+	"name": "waton-bot",
+	"version": "1",
+	"description": "Proyecto independiente de un bot para Discord.",
+	"main": "bot.js",
+	"scripts": {
+		"start": "node ./bot.js"
+	},
+	"author": "JajoScript",
+	"license": "MIT",
+	"dependencies": {
+		"discord.js": "^12.5.3",
+		"dotenv": "^10.0.0"
+	}
 }
