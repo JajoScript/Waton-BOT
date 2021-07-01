@@ -1,9 +1,10 @@
-
 # Waton bot
 
 Proyecto de codigo abierto para la implementación de un bot en discord.
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/JajoScript/waton-bot)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d5606d2e7dfe45d485d9124180b1cda9)](https://www.codacy.com/gh/JajoScript/waton-bot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JajoScript/waton-bot&amp;utm_campaign=Badge_Grade)
 
 ---
 ## Instalación 
@@ -23,7 +24,7 @@ Para ejecutar este proyecto, deberá agregar las siguientes variables de entorno
 
 `DISCORD_PREFIX`
 
-No se descarta que en un futuro se implementes más variables para el manejo de una base de datos.
+No se descarta que en un futuro se implementen más variables para el manejo de una base de datos.
 
 ---
 ## Ejecución de manera local
@@ -54,11 +55,11 @@ Iniciar la ejecución.
 ```
 
 ---
-## Authors
+## Autores
 
 El desarrollo de este proyecto a sido posible gracias a:
 
-- [@Jajoscript](https://github.com/JajoScript)
+-	[@Jajoscript](https://github.com/JajoScript)
 
 ---
 ## License
