@@ -1,3 +1,4 @@
+// Dependencias.
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
@@ -20,6 +21,6 @@ module.exports = {
 		}
 
 		// Envio del mensaje.
-		mensaje.channel.send(mensajePersonalizado);
+		mensaje.channel.send(mensajePersonalizado);		
 	}
 };

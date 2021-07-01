@@ -71,5 +71,7 @@ module.exports = {
 			mensaje.reply(`Tengo problemas para ejecutar el comando: ${nombreComando}`);
 			console.log(error);
 		};
+
+
 	}
 };
