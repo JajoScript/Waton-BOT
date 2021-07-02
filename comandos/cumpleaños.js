@@ -40,7 +40,7 @@ module.exports = {
                     console.log('Faltan: '+ dias+' dias')
 
                 //SI EL VALOR ES MAYOR A 0 EL CUMPLEAÑOS ESTA POR VENIR.
-                }else if (diferentMeses>0){
+                }else if (diferencia_Mes>0){
                     //OBTENER EL DIA Y MES DEL CUMPLEAÑOS Y USAR EL AÑO ACTUAL.
                     console.log('Dia: '+dia+ ' Mes: '+mes +' Ano: '+ ano)
                     let cuenta_regresiva = new Date(ano,mes-1,dia).getTime()
