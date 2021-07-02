@@ -1,6 +1,7 @@
 // Dependencias.
 const { MessageEmbed } = require("discord.js");
 const mongoose = require("mongoose");
+const { schema } = require("../colecciones/usuarios.js");
 
 // Importando el modelo.
 const EsquemaUsuario = require("../colecciones/usuarios.js");
@@ -55,11 +56,23 @@ module.exports = {
                mensaje.channel.send(mensajeEmbed);
             }
             else {
+
+               // Cargando el nuevo cumpleaños.
+               let nuevoCumpleaños = new Date(cumpleaños[2], (parseInt(cumpleaños[1], 10) - 1) , cumpleaños[0]);
+               esquema.updateOne({ nacimiento: nuevoCumpleaños})
+                  .then(() => console.log("[BOT][DB] Se actualizo la base de datos!"))
+                  .catch((err) => console.log(err));
+
+               // Guardando la información de la base de datos.
+               esquema.save()
+                  .then(() => console.log("[BOT][DB] Se guardaron los cambios en la base de datos!"))
+                  .catch((err) => console.log(err));
+
                // Mensaje de respuesta.
                let mensajeEmbed = new MessageEmbed()
                .setColor("BLUE")
                .setTitle("Base de datos")
-               .setFooter(`🧐 Usuario: ${usuarioNick} presente en la base de datos!`);
+               .setFooter(`🧐 Usuario: ${usuarioNick} se actualizaron los datos en la base de datos!`);
 
                mensaje.channel.send(mensajeEmbed);
             }
