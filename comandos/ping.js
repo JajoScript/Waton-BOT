@@ -10,7 +10,7 @@ module.exports = {
 
 		let mensajePersonalizado = new MessageEmbed()
 			.setTitle("Ping")
-			.setDescription(`:satellite: Pong! **${ping}** ms.`)
+			.setDescription(`:satellite: Pong! **${ping}** ms.`);
 
 		if (ping > 300){
 			mensajePersonalizado.setColor(0xff0000);

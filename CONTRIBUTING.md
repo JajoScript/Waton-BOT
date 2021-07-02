@@ -7,10 +7,10 @@ Tenga en cuenta que tenemos un código de conducta, sígalo en todas sus interac
 ---
 ## Proceso de Pull Request
 
-1.   Asegúrese de que se eliminan las dependencias de instalación o compilación.
-2.   En caso de implementar: nuevas variables de entorno, definicion de puertos, cambios de direcctorios o parametros de contenedores. Asegurese de especificarlo en el archivo **README.md**
-3.  Incremente la versión representada en el archivo **README.md**.
-4.  Sus cambios pueden ser implementados luego de que alguno de los desarrolladores apruebe sus cambios.
+1.	Asegúrese de que se eliminan las dependencias de instalación o compilación.
+2.	En caso de implementar: nuevas variables de entorno, definicion de puertos, cambios de direcctorios o parametros de contenedores. Asegurese de especificarlo en el archivo **README.md**
+3.	Incremente la versión representada en el archivo **README.md**.
+4.	Sus cambios pueden ser implementados luego de que alguno de los desarrolladores apruebe sus cambios.
 
 ---
 ## Código de conducta

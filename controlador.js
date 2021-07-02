@@ -3,13 +3,13 @@ const {readdirSync} = require("fs");
 
 // Definición clase: Controlador de archivos.
 class Controlador {
-	lector_comandos(Cliente){
+	lectorComandos(Cliente){
 		// Leer y filtrar los archivos del directorio eventos.
-		const archivos_comandos = readdirSync("./comandos").filter(archivo => archivo.endsWith(".js"));
+		const archivosComandos = readdirSync("./comandos").filter(archivo => archivo.endsWith(".js"));
 		let numeroComandos = 0;
 		
 		// Ciclo para leer cada archivo del directorio.
-		for (const archivo of archivos_comandos){
+		for (const archivo of archivosComandos){
 			// Cargando el archivo.
 			const comando = require(`./comandos/${archivo}`);
 
@@ -22,15 +22,15 @@ class Controlador {
 		}
 
 		console.log(`[BOT][COMMAND] Se cargaron ${numeroComandos} comandos!`);
-	};
+	}
 
-	lector_eventos(Cliente){
+	lectorEventos(Cliente){
 		// Leer y filtrar los archivos del directorio eventos.
-		const archivos_eventos = readdirSync("./eventos").filter(archivo => archivo.endsWith(".js"));
+		const archivosEventos = readdirSync("./eventos").filter(archivo => archivo.endsWith(".js"));
 		let numeroEventos = 0;
 
 		// Ciclo para leer cada archivo del directorio.
-		for (const archivo of archivos_eventos){
+		for (const archivo of archivosEventos){
 			const evento = require(`./eventos/${archivo}`);
 			
 			// Separando los eventos de tipo "once".

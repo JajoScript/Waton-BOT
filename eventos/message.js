@@ -20,7 +20,7 @@ module.exports = {
 		} else if(contenido.toLowerCase() === "te amo"){
 			mensaje.reply("Yo te amo más!");
 		} else if(contenido.toLowerCase() === "quien es tu dios?"){
-			mensaje.reply(`Watica es mi dios 🥵`);
+			mensaje.reply("Watica es mi dios 🥵");
 		} else if(contenido.toLowerCase() === "quien es tu creador?"){
 			mensaje.channel.send(`Mi creador es <@${usuarios.Jajo.id}>`);
 		} else if(contenido.toLowerCase() === "quien es el mas weon?"){
@@ -32,7 +32,7 @@ module.exports = {
 			console.log(`[BOT][EVENT:${this.nombre}][CLOWN:ERROR] No existe el rol \"Payaso\".`);
 
 		}else {
-			if(mensaje.member.roles.cache.has(rolPayaso.id) && usuarioID != usuarios.Jajo.id){
+			if(mensaje.member.roles.cache.has(rolPayaso.id) && usuarioID !== usuarios.Jajo.id){
 				console.log(`[BOT][EVENT:${this.nombre}][CLOWN] Se agrego la reacción.`);
 
 				mensaje.react("🤡")
@@ -44,8 +44,8 @@ module.exports = {
 		}
 
 		// Filtros contra bots.
-		if(!mensaje.content.startsWith(process.env.DISCORD_PREFIX || "*")) return;
-		if(mensaje.author.bot) return;
+		if(!mensaje.content.startsWith(process.env.DISCORD_PREFIX || "*")){ return; };
+		if(mensaje.author.bot){ return; };
 
 		// Definición de argumentos y comandos.
 		const argumentos = mensaje.content.slice(process.env.DISCORD_PREFIX.length).trim().split(/ +/g);
@@ -70,8 +70,6 @@ module.exports = {
 			console.log(`[BOT][EVENT:${this.nombre}] Problema al ejecutar el comando.`);
 			mensaje.reply(`Tengo problemas para ejecutar el comando: ${nombreComando}`);
 			console.log(error);
-		};
-
-
+		}
 	}
 };

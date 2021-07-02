@@ -60,7 +60,7 @@ Iniciar la ejecución.
 El desarrollo de este proyecto a sido posible gracias a:
 
 -	[@Jajoscript](https://github.com/JajoScript)
-- [@GODfataliti](https://github.com/GODfataliti)
+-	[@GODfataliti](https://github.com/GODfataliti)
 
 ---
 ## License

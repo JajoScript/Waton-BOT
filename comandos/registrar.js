@@ -1,7 +1,6 @@
 // Dependencias.
 const { MessageEmbed } = require("discord.js");
 const mongoose = require("mongoose");
-const { schema } = require("../colecciones/usuarios.js");
 
 // Importando el modelo.
 const EsquemaUsuario = require("../colecciones/usuarios.js");
@@ -15,16 +14,16 @@ module.exports = {
       let usuarioID = mensaje.author.id;
 
       // Deconstrucción de la fecha.
-      if (!argumentos || argumentos.length != 1){
+      if (!argumentos || argumentos.length !== 1){
          mensaje.reply("Es necesario colocar la fecha con el siguiente formato: dia-mes-año, ej: 23-03-2001");
-         return 
+         return;
       }
 
       let cumpleaños = argumentos[0].split("-"); // 23-03-2001
 
       if (cumpleaños.length != 3 || cumpleaños[2].length < 4) {
          mensaje.reply("Es necesario colocar la fecha con el siguiente formato: dia-mes-año, ej: 23-03-2001");
-         return 
+         return;
       }
 
       let miCumpleaños = new Date(cumpleaños[2], (parseInt(cumpleaños[1], 10) - 1) , cumpleaños[0]);

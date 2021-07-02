@@ -13,8 +13,8 @@ Cliente.comandos = new Discord.Collection();
 
 // Cargando comandos.
 let controlador = new Controlador;
-controlador.lector_comandos(Cliente);
-controlador.lector_eventos(Cliente);
+controlador.lectorComandos(Cliente);
+controlador.lectorEventos(Cliente);
 
 // Inicio de sesión.
 Cliente.login(process.env.DISCORD_TOKEN)

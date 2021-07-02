@@ -5,33 +5,34 @@ module.exports = {
 	descripcion: "Muestra el avatar del usuario mencionado o el avatar propio",
 	ejecutar(mensaje, argumentos){
 		// Variables para el comando.
-		let mensaje_avatar = new MessageEmbed()
+		let mensajeAvatar = new MessageEmbed()
 			.setColor(0x66b3ff);
 			
-		let persona_mencionada = mensaje.mentions.users.first();
-		console.log(`[DEV] Se menciono a:  ${persona_mencionada}`);
+		let personaMencionada = mensaje.mentions.users.first();
+		console.log(`[DEV] Se menciono a:  ${personaMencionada}`);
 
 		// CASO 1: No mencionan a nadie, mostrar el avatar propio.
-		if(!persona_mencionada) {
-			persona_mencionada = mensaje.author;
-			console.log(`[DEV] Se menciono al autor:  ${persona_mencionada}`);
+		if(!personaMencionada) {
+			personaMencionada = mensaje.author;
+			console.log(`[DEV] Se menciono al autor:  ${personaMencionada}`);
 		}
 		
 		// CASO 2: Se menciona a alguien, mostrar el avatar de la persona mencionda. 
 		
 		// Agregando la información al embed.
-		let avatarDinamico = persona_mencionada.avatarURL({dynamic: true, size: 4096});
+		let avatarDinamico = personaMencionada.avatarURL({dynamic: true, size: 4096});
 
 		if (avatarDinamico){
 			// Agregando el avatar si existe.
-			mensaje_avatar
-				.setImage(`${persona_mencionada.avatarURL({dynamic: true, size: 4096})}`)
-				.setFooter(`Avatar de ${persona_mencionada.username}`);
+			mensajeAvatar
+				.setImage(`${personaMencionada.avatarURL({dynamic: true, size: 4096})}`)
+				.setFooter(`Avatar de ${personaMencionada.username}`);
+				
 		}else if (!avatarDinamico){
-			mensaje_avatar
-				.setFooter(`🤔 ${persona_mencionada.username} No tiene un avatar.`)
+			mensajeAvatar
+				.setFooter(`🤔 ${personaMencionada.username} No tiene un avatar.`);
 		}	
 
-		mensaje.channel.send(mensaje_avatar);
+		mensaje.channel.send(mensajeAvatar);
 	}
 };
