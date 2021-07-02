@@ -57,13 +57,23 @@ module.exports = {
 
 						var edad = (FechaAhora.getFullYear() - CumpleFecha.getFullYear());
 					}
-
+					
+					// Mensaje personalizado.
+					let avatarDinamico = PersonaMenciona.avatarURL({dynamic: true, size: 4096});
 					let mensajePersonalizado = new MessageEmbed()
+
+					if (avatarDinamico){
+						// Agregando el avatar si existe.
+						mensajePersonalizado
+							.setImage(`${PersonaMenciona.avatarURL({dynamic: true, size: 64})}`)
+							
+					}
+
+					mensajePersonalizado
 						.setColor("GREEN")
 						.setTitle(`✨ CUMpleaños ${PersonaMenciona.username}`)
 						.addField(`📣 Para su CUMpleaños faltan:`, `${dias} dias`)
 						.addField(`🥳 ${PersonaMenciona.username} cumple: `, `${edad} años`)
-						.setImage(`${PersonaMenciona.avatarURL({dynamic: true, size: 64})}`)
 						.setDescription("Venganse todos...")
 
 					mensaje.channel.send(mensajePersonalizado);

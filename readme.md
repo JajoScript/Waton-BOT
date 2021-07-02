@@ -55,11 +55,12 @@ Iniciar la ejecución.
 ```
 
 ---
-## Autores
+## Contribuidores
 
 El desarrollo de este proyecto a sido posible gracias a:
 
 -	[@Jajoscript](https://github.com/JajoScript)
+- [@GODfataliti](https://github.com/GODfataliti)
 
 ---
 ## License

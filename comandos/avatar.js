@@ -20,9 +20,17 @@ module.exports = {
 		// CASO 2: Se menciona a alguien, mostrar el avatar de la persona mencionda. 
 		
 		// Agregando la información al embed.
-		mensaje_avatar
-			.setImage(`${persona_mencionada.avatarURL({dynamic: true, size: 4096})}`)
-			.setFooter(`Avatar de ${persona_mencionada.username}`);
+		let avatarDinamico = persona_mencionada.avatarURL({dynamic: true, size: 4096});
+
+		if (avatarDinamico){
+			// Agregando el avatar si existe.
+			mensaje_avatar
+				.setImage(`${persona_mencionada.avatarURL({dynamic: true, size: 4096})}`)
+				.setFooter(`Avatar de ${persona_mencionada.username}`);
+		}else if (!avatarDinamico){
+			mensaje_avatar
+				.setFooter(`🤔 ${persona_mencionada.username} No tiene un avatar.`)
+		}	
 
 		mensaje.channel.send(mensaje_avatar);
 	}
