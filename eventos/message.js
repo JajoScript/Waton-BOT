@@ -11,6 +11,8 @@ module.exports = {
 		let usuarioID = mensaje.author.id;
 		let rolPayaso = mensaje.guild.roles.cache.find((rol) => rol.name === "Payaso");
 		console.log(`[BOT][EVENT:${this.nombre}] @${usuarioNombre} : ${contenido}`);
+		
+		
 
 		// Mensajes por defecto.
 		if (contenido.toLowerCase() === "gd"){
