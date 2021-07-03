@@ -2,6 +2,7 @@
 
 Proyecto de codigo abierto para la implementación de un bot en discord.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c2fdf56ea7c14f95bf784219458627c4)](https://app.codacy.com/gh/JajoScript/waton?utm_source=github.com&utm_medium=referral&utm_content=JajoScript/waton&utm_campaign=Badge_Grade_Settings)
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/JajoScript/waton-bot)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d5606d2e7dfe45d485d9124180b1cda9)](https://www.codacy.com/gh/JajoScript/waton-bot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JajoScript/waton-bot&amp;utm_campaign=Badge_Grade)
