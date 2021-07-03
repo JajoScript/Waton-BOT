@@ -37,6 +37,6 @@ module.exports = {
             .catch((err) => console.log(err));
       });
 
-      mensaje.channel.send(`${servidorNombre}, [${listaUsuarios}]`);
+      // mensaje.channel.send(`${servidorNombre}, [${listaUsuarios}]`);
    }
 }
