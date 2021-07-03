@@ -11,7 +11,7 @@ class Controlador {
 		// Ciclo para leer cada archivo del directorio.
 		for (const archivo of archivosComandos){
 			// Cargando el archivo.
-			const comando = require(`./comandos/${archivo}`);
+			const comando = require(`../comandos/${archivo}`);
 
 			// Cargando el comando en la colección.
 			Cliente.comandos.set(comando.nombre, comando);
@@ -31,7 +31,7 @@ class Controlador {
 
 		// Ciclo para leer cada archivo del directorio.
 		for (const archivo of archivosEventos){
-			const evento = require(`./eventos/${archivo}`);
+			const evento = require(`../eventos/${archivo}`);
 			
 			// Separando los eventos de tipo "once".
 			if (evento.simple) {

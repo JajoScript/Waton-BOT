@@ -3,7 +3,7 @@ require("dotenv").config();
 
 // Dependencias.
 const Discord = require("discord.js");
-const Controlador = require("./controlador");
+const Controlador = require("./funcionalidad/controlador.js");
 
 // Instancias.
 const Cliente = new Discord.Client();

@@ -12,6 +12,8 @@ module.exports = {
       // Variables del comando.
       let usuarioNick = mensaje.author.username;
       let usuarioID = mensaje.author.id;
+      let serverID = mensaje.guild.id;
+      let serverName = mensaje.guild.name;
 
       // Deconstrucción de la fecha.
       if (!argumentos || argumentos.length !== 1){
@@ -36,7 +38,12 @@ module.exports = {
                   _id : mongoose.Types.ObjectId(),
                   userID : usuarioID,
                   username: usuarioNick,
-                  nacimiento: miCumpleaños
+                  nacimiento: miCumpleaños,
+
+                  servidores : [{
+                     servidorID: serverID,
+                     servidorNombre: serverName
+                  }]
                });
 
                // Guardando la información en la base de datos.
@@ -58,7 +65,7 @@ module.exports = {
 
                // Cargando el nuevo cumpleaños.
                let nuevoCumpleaños = new Date(cumpleaños[2], (parseInt(cumpleaños[1], 10) - 1) , cumpleaños[0]);
-               esquema.updateOne({ nacimiento: nuevoCumpleaños})
+               esquema.updateOne({ nacimiento: nuevoCumpleaños })
                   .then(() => console.log("[BOT][DB] Se actualizo la base de datos!"))
                   .catch((err) => console.log(err));
 
