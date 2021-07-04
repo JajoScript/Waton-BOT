@@ -14,7 +14,10 @@ module.exports = {
       var servidorNombre = mensaje.guild.name;
       let cumpleañero = new Cumpleañero;
       var mensajePersonalizado = new MessageEmbed()
-         .setColor("RANDOM");
+         .setColor("RANDOM")
+         .setTitle("🛐 Lista de cumpleaños: ")
+         .setThumbnail("https://cdn.discordapp.com/attachments/858141366487613440/861369026219606066/kieperokomo.jpg")
+         .setDescription("🥵 Feliz cum.");
          
       // Lista de los usuarios en el servidor.
       var listaUsuarios = [];
@@ -34,10 +37,10 @@ module.exports = {
 
                   // Calculando los dias restantes.
                   let diasRestantes = cumpleañero.definirDiasRestantes(fechaCumpleaños);
-                  console.log(`${nombreUsuario} : ${fechaCumpleaños} : ${diasRestantes}`)
+                  let horasRestantes = cumpleañero.definirHorasRestantes(fechaCumpleaños);
 
                   // Insertando los elementos en la lista.
-                  listaCumpleaños.push({dias: diasRestantes, nombre: nombreUsuario});
+                  listaCumpleaños.push({dias: diasRestantes, horas: horasRestantes, nombre: nombreUsuario});
 
                   // Ordenando los elementos dentro de la lista.
                   listaCumpleaños.sort((a,b) => {
@@ -56,7 +59,7 @@ module.exports = {
 
                let iterador = 1
                listaCumpleaños.map((miembro) => {
-                  mensajePersonalizado.addField(`${iterador}.- 🥳 ${miembro.nombre}`, `en 🎉 ${miembro.dias} dias`);
+                  mensajePersonalizado.addField(`${iterador}.- 🥳 ${miembro.nombre}`, `en 🎉 ${miembro.dias} dias y ${miembro.horas} hrs`);
                   iterador++;
                });
 

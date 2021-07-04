@@ -60,7 +60,6 @@ class Cumpleañero {
       var horasRestantes = Math.floor((tiempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
       return horasRestantes;
-
    }
 
    // Getters & Setters
