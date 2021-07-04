@@ -1,90 +1,71 @@
 // Dependencias.
+const Cumpleañero = require("../funcionalidad/cumpleañero.js");
 const { MessageEmbed } = require("discord.js");
 
 // Importando el modelo.
 const EsquemaUsuario = require("../colecciones/usuarios.js");
 
+// Exportación del comando: cumpleaños
 module.exports = {
-	nombre: "cumpleaños",
-	descripcion:
-		"Responde cuantos dias faltan para el CUMpleaños del mencionado.",
-	ejecutar(mensaje, argumentos) {
-		// Comprobación si se etiqueta a alguien.
-		if (!argumentos || argumentos.length < 1){
-			var PersonaMenciona = mensaje.author;
-			var personaID = PersonaMenciona.id;
+   nombre: "cumpleaños",
+   descripcion: "Muestra la lista de los cumpleaños más cercanos.",
+   async ejecutar(mensaje, argumentos) {
+      // Instancias y variables.
+      var servidorNombre = mensaje.guild.name;
+      let cumpleañero = new Cumpleañero;
+      var mensajePersonalizado = new MessageEmbed()
+         .setColor("RANDOM")
+         .setTitle("🛐 Lista de cumpleaños: ")
+         .setThumbnail("https://cdn.discordapp.com/attachments/858141366487613440/861369026219606066/kieperokomo.jpg")
+         .setDescription("🥵 Feliz cum.");
+         
+      // Lista de los usuarios en el servidor.
+      var listaUsuarios = [];
+      var listaCumpleaños = [];
 
-			console.log(`No se menciono a nadie ${PersonaMenciona}: ${personaID}`)
-		} else {
-			var PersonaMenciona = mensaje.mentions.users.first();
-			var personaID = PersonaMenciona.id;
-		}
+      // Determinando los usuarios presentes dentro del servidor.
+      mensaje.guild.members.cache.map((miembro) => { listaUsuarios.push(miembro.id) });
+      console.log(listaUsuarios);
 
-		EsquemaUsuario.findOne({ userID: personaID })
-			.then((esquema) => {
-				if (!esquema) {
-					mensaje.channel.send("El usuario no esta registrado en la base de datos 😞");
-				} else {
-					// PRIMERO: OBTENER FECHA ACTUAL Y LA DEL CUMPLEAÑOS
-               let FechaAhora = new Date(); // Fecha de hoy.
-               let CumpleDB = esquema.nacimiento;
-               let CumpleFecha = new Date(CumpleDB); //Fecha Cumple
+      // Consulta.
+      EsquemaUsuario.find({userID: { $in : listaUsuarios}})
+         .then((esquemas) => {
+            if(esquemas){
+               esquemas.map((documento) => {
+                  let nombreUsuario = documento.username;
+                  let fechaCumpleaños = documento.nacimiento;
 
-               // OBTENER LOS VALORES INDIVUDUALES
-               let dia = CumpleFecha.getDate();
-               let mes = CumpleFecha.getMonth();
-               let año = FechaAhora.getFullYear();
-               let ahora = FechaAhora.getTime();
+                  // Calculando los dias restantes.
+                  let diasRestantes = cumpleañero.definirDiasRestantes(fechaCumpleaños);
+                  let horasRestantes = cumpleañero.definirHorasRestantes(fechaCumpleaños);
 
-               // SEGUNDO: VERIFICAR SI ES QUE EL MES ACTUAL ES MAYOR O MENOR AL MES DEL CUMPLEAÑOS
-               let DiferenciaMes = CumpleFecha.getMonth() - FechaAhora.getMonth();
+                  // Insertando los elementos en la lista.
+                  listaCumpleaños.push({dias: diasRestantes, horas: horasRestantes, nombre: nombreUsuario});
 
-               //SI EL VALOR ES MENOR O IGUAL A 0: EL CUMPLEAÑOS YA PASO
-               if (DiferenciaMes <= 0) { 
-                  //VERIFICAR SI EL DIA YA PASO
-                  if(dia>=FechaAhora.getDate()){
-                     var CuentaRegresiva = new Date(año, mes, dia).getTime();
+                  // Ordenando los elementos dentro de la lista.
+                  listaCumpleaños.sort((a,b) => {
+                     console.log(`a: ${a.dias} , b: ${b.dias}`);
 
-                  }else{
-                     //OBTENER EL DIA Y MES DEL CUMPLEAÑOS Y SUMARLE 1 AL AÑO ACTUAL.
-                     var CuentaRegresiva = new Date(año + 1, mes, dia).getTime();
-                  }
-                  let diferencia = CuentaRegresiva - ahora;
-                  var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                     if (a.dias > b.dias) {
+                        return 1;
+                     }
+                     if (a.dias < b.dias) {
+                        return -1;
+                     }
 
-                  //SI EL VALOR ES MAYOR A 0 EL CUMPLEAÑOS ESTA POR VENIR.
-                  var edad = (FechaAhora.getFullYear() - CumpleFecha.getFullYear()) + 1;
+                     return 0;
+                  });
+               })
 
-               } else if (DiferenciaMes > 0) {
-                  //OBTENER EL DIA Y MES DEL CUMPLEAÑOS Y USAR EL AÑO ACTUAL.
-                  let CuentaRegresiva = new Date(año, mes, dia).getTime();
-                  let diferencia = CuentaRegresiva - ahora;
-                  var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+               let iterador = 1
+               listaCumpleaños.map((miembro) => {
+                  mensajePersonalizado.addField(`${iterador}.- 🥳 ${miembro.nombre}`, `en 🎉 ${miembro.dias} dias y ${miembro.horas} hrs`);
+                  iterador++;
+               });
 
-                  var edad = (FechaAhora.getFullYear() - CumpleFecha.getFullYear());
-					}
-					
-					// Mensaje personalizado.
-					let avatarDinamico = PersonaMenciona.avatarURL({dynamic: true, size: 4096});
-					let mensajePersonalizado = new MessageEmbed()
-
-					if (avatarDinamico){
-						// Agregando el avatar si existe.
-						mensajePersonalizado
-							.setImage(`${PersonaMenciona.avatarURL({dynamic: true, size: 64})}`)
-							
-					}
-
-					mensajePersonalizado
-						.setColor("GREEN")
-						.setTitle(`✨ CUMpleaños ${PersonaMenciona.username}`)
-						.addField(`📣 Para su CUMpleaños faltan:`, `${dias} dias`)
-						.addField(`🥳 ${PersonaMenciona.username} cumple: `, `${edad} años`)
-						.setDescription("Venganse todos...")
-
-					mensaje.channel.send(mensajePersonalizado);
-				}
-			})
-			.catch((err) => console.log(err));
-	},
-};
+               mensaje.channel.send(mensajePersonalizado);
+            }
+         })
+         .catch((err) => console.log(err));
+   }
+}

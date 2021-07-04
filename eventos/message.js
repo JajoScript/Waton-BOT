@@ -13,10 +13,15 @@ module.exports = {
 		let servidorID = mensaje.guild.id;
 		let servidorNombre = mensaje.guild.name;
 		console.log(`[BOT][EVENT:${this.nombre}] @${usuarioNombre} : ${contenido}`);
+<<<<<<< HEAD
 		console.log(mensaje.guild);
 
 		console.log(`Server id: ${servidorID}`);
 		console.log(`Server nombre: ${servidorNombre}`);
+=======
+		
+		
+>>>>>>> master
 
 		// Mensajes por defecto.
 		if (contenido.toLowerCase() === "gd"){
