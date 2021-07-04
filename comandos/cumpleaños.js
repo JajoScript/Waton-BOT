@@ -1,5 +1,6 @@
 // Dependencias.
 const Cumpleañero = require("../funcionalidad/cumpleañero.js");
+const { MessageEmbed } = require("discord.js");
 
 // Importando el modelo.
 const EsquemaUsuario = require("../colecciones/usuarios.js");
@@ -9,13 +10,17 @@ module.exports = {
    nombre: "cumpleaños",
    descripcion: "Muestra la lista de los cumpleaños más cercanos.",
    async ejecutar(mensaje, argumentos) {
+      // Instancias y variables.
+      var servidorNombre = mensaje.guild.name;
       let cumpleañero = new Cumpleañero;
-      let servidorNombre = mensaje.guild.name;
-      
+      var mensajePersonalizado = new MessageEmbed()
+         .setColor("RANDOM");
+         
       // Lista de los usuarios en el servidor.
       var listaUsuarios = [];
       var listaCumpleaños = [];
 
+      // Determinando los usuarios presentes dentro del servidor.
       mensaje.guild.members.cache.map((miembro) => { listaUsuarios.push(miembro.id) });
       console.log(listaUsuarios);
 
@@ -27,13 +32,14 @@ module.exports = {
                   let nombreUsuario = documento.username;
                   let fechaCumpleaños = documento.nacimiento;
 
+                  // Calculando los dias restantes.
                   let diasRestantes = cumpleañero.definirDiasRestantes(fechaCumpleaños);
                   console.log(`${nombreUsuario} : ${fechaCumpleaños} : ${diasRestantes}`)
 
                   // Insertando los elementos en la lista.
                   listaCumpleaños.push({dias: diasRestantes, nombre: nombreUsuario});
 
-                  // 
+                  // Ordenando los elementos dentro de la lista.
                   listaCumpleaños.sort((a,b) => {
                      console.log(`a: ${a.dias} , b: ${b.dias}`);
 
@@ -47,9 +53,14 @@ module.exports = {
                      return 0;
                   });
                })
-               
-               console.log(listaCumpleaños);
-               mensaje.channel.send(`Lista de cumpleaños: ${listaCumpleaños}`);
+
+               let iterador = 1
+               listaCumpleaños.map((miembro) => {
+                  mensajePersonalizado.addField(`${iterador}.- 🥳 ${miembro.nombre}`, `en 🎉 ${miembro.dias} dias`);
+                  iterador++;
+               });
+
+               mensaje.channel.send(mensajePersonalizado);
             }
          })
          .catch((err) => console.log(err));
