@@ -28,7 +28,9 @@ module.exports = {
                   let fechaCumpleaños = documento.nacimiento;
 
                   let diasRestantes = cumpleañero.definirDiasRestantes(fechaCumpleaños);
-                  console.log(`${nombreUsuario} : ${fechaCumpleaños} : ${diasRestantes}`)
+                  let horasRestantes = cumpleañero.definirHorasRestantes(fechaCumpleaños);
+
+                  console.log(`${nombreUsuario} : ${fechaCumpleaños} : ${diasRestantes} : ${horasRestantes}`);
 
                   // Insertando los elementos en la lista.
                   listaCumpleaños.push({dias: diasRestantes, nombre: nombreUsuario});
