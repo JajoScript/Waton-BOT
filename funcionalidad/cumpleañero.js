@@ -3,8 +3,7 @@ class Cumpleañero {
    // Constructor.
    // Metodos.
 
-   definirDiasRestantes(fecha){
-
+   definirTiempoRestante(fecha){
       // PRIMERO: OBTENER FECHA ACTUAL Y LA DEL CUMPLEAÑOS
       let FechaAhora = new Date(); // Fecha de hoy.
       let CumpleDB = fecha;
@@ -23,10 +22,8 @@ class Cumpleañero {
       if (DiferenciaMes < 0) {
          var CuentaRegresiva = new Date(año + 1, mes, dia).getTime();
          let diferencia = CuentaRegresiva - ahora;
-         var diasRestantes = Math.floor(diferencia / (1000 * 60 * 60 * 24));
 
          //SI EL VALOR ES MAYOR A 0 EL CUMPLEAÑOS ESTA POR VENIR.
-         var edad = (FechaAhora.getFullYear() - CumpleFecha.getFullYear()) + 1;
 
       //SI EL VALOR ES IGUAL 0: EL CUMPLEAÑOS ESTA EN EL MES
       }else if(DiferenciaMes==0){
@@ -38,7 +35,6 @@ class Cumpleañero {
          }
 
          let diferencia = CuentaRegresiva - ahora;
-         var diasRestantes = Math.floor(diferencia / (1000 * 60 * 60 * 24));
 
          //SI EL VALOR ES MAYOR A 0 EL CUMPLEAÑOS ESTA POR VENIR.
          var edad = (FechaAhora.getFullYear() - CumpleFecha.getFullYear()) + 1;
@@ -47,12 +43,24 @@ class Cumpleañero {
          //OBTENER EL DIA Y MES DEL CUMPLEAÑOS Y USAR EL AÑO ACTUAL.
          let CuentaRegresiva = new Date(año, mes, dia).getTime();
          let diferencia = CuentaRegresiva - ahora;
-         var diasRestantes = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-
-         var edad = (FechaAhora.getFullYear() - CumpleFecha.getFullYear());
       }
 
+      return diferencia;
+   }
+
+   definirDiasRestantes(fecha){
+      var tiempoRestante = this.definirTiempoRestante(fecha);
+      var diasRestantes = Math.floor(tiempoRestante / (1000 * 60 * 60 * 24));
+      
       return diasRestantes;
+   }
+
+   definirHorasRestantes(fecha){
+      var tiempoRestante = this.definirTiempoRestante(fecha);
+      var horasRestantes = Math.floor((tiempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+      return horasRestantes;
+
    }
 
    // Getters & Setters
