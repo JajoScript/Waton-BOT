@@ -1,5 +1,7 @@
+// Dependencias.
 const { MessageEmbed } = require("discord.js");
 
+// Creación del comando: avatar.
 module.exports = {
 	nombre: "avatar",
 	descripcion: "Muestra el avatar del usuario mencionado o el avatar propio",

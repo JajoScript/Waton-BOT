@@ -8,35 +8,50 @@ const EsquemaUsuario = require("../colecciones/usuarios.js");
 module.exports = {
    nombre: "cumpleaños",
    descripcion: "Muestra la lista de los cumpleaños más cercanos.",
-   ejecutar(mensaje, argumentos){
+   async ejecutar(mensaje, argumentos) {
       let cumpleañero = new Cumpleañero;
       let servidorNombre = mensaje.guild.name;
       
       // Lista de los usuarios en el servidor.
-      let listaUsuarios = []
-      mensaje.guild.members.cache.map((miembros) => listaUsuarios.push(miembros.id));
+      var listaUsuarios = [];
+      var listaCumpleaños = [];
 
-      // Haciendo la consulta por cada uno de los miembros.
-      mensaje.guild.members.cache.map((miembro) => {
+      mensaje.guild.members.cache.map((miembro) => { listaUsuarios.push(miembro.id) });
+      console.log(listaUsuarios);
 
-         // Consulta a la base de datos.
-         EsquemaUsuario.findOne({ userID: miembro.id})
-            .then((esquema) => { 
-               if (esquema) {
-                  // Datos del usuario.
-                  console.log(esquema);
-                  let nombreUsuario = esquema.username;
-                  let usuarioID = miembro.id;
-                  let fechaCumpleaños = esquema.nacimiento;
+      // Consulta.
+      EsquemaUsuario.find({userID: { $in : listaUsuarios}})
+         .then((esquemas) => {
+            if(esquemas){
+               esquemas.map((documento) => {
+                  let nombreUsuario = documento.username;
+                  let fechaCumpleaños = documento.nacimiento;
 
                   let diasRestantes = cumpleañero.definirDiasRestantes(fechaCumpleaños);
-                  
-                  console.log(`ID: ${usuarioID} Nombre: ${nombreUsuario}, fecha: ${fechaCumpleaños}, dias: ${diasRestantes}`);   
-               }
-            })
-            .catch((err) => console.log(err));
-      });
+                  console.log(`${nombreUsuario} : ${fechaCumpleaños} : ${diasRestantes}`)
 
-      // mensaje.channel.send(`${servidorNombre}, [${listaUsuarios}]`);
+                  // Insertando los elementos en la lista.
+                  listaCumpleaños.push({dias: diasRestantes, nombre: nombreUsuario});
+
+                  // 
+                  listaCumpleaños.sort((a,b) => {
+                     console.log(`a: ${a.dias} , b: ${b.dias}`);
+
+                     if (a.dias > b.dias) {
+                        return 1;
+                     }
+                     if (a.dias < b.dias) {
+                        return -1;
+                     }
+
+                     return 0;
+                  });
+               })
+               
+               console.log(listaCumpleaños);
+               mensaje.channel.send(`Lista de cumpleaños: ${listaCumpleaños}`);
+            }
+         })
+         .catch((err) => console.log(err));
    }
 }
