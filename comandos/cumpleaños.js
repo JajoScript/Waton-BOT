@@ -44,8 +44,6 @@ module.exports = {
 
                   // Ordenando los elementos dentro de la lista.
                   listaCumpleaños.sort((a,b) => {
-                     console.log(`a: ${a.dias} , b: ${b.dias}`);
-
                      if (a.dias > b.dias) {
                         return 1;
                      }
