@@ -10,6 +10,8 @@ module.exports = {
 		let usuarioNombre = mensaje.author.username;
 		let usuarioID = mensaje.author.id;
 		let rolPayaso = mensaje.guild.roles.cache.find((rol) => rol.name === "Payaso");
+		let palabrasBaneadas = ["maricon, mariconcito, trolaso"];
+
 		console.log(`[BOT][EVENT:${this.nombre}] @${usuarioNombre} : ${contenido}`);
 		
 		
@@ -29,6 +31,11 @@ module.exports = {
 			mensaje.reply(`El más weon es el <@${usuarios.Alonso.id}>`);
 		}
 		
+		// Detector de palabras.
+		if (palabrasBaneadas.some(palabra => contenido.includes(palabra))){
+			mensaje.reply("y esa boquita?");
+		}
+
 		// Control para el rol de "Payaso".
 		if (!rolPayaso) {
 			console.log(`[BOT][EVENT:${this.nombre}][CLOWN:ERROR] No existe el rol \"Payaso\".`);

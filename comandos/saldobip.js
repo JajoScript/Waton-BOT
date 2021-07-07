@@ -19,7 +19,7 @@ module.exports = {
       // Consulta a bip por el saldo.
       // Revisar la dependencias... Error 402
       console.log("N°:", numeroTarjeta);
-      await bip(numeroTarjeta)
+      bip(numeroTarjeta)
          .then((data) => {
             console.log(data);
             if(data){
