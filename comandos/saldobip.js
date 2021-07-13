@@ -5,6 +5,7 @@ const bip = require("bip");
 module.exports = {
    nombre: "saldobip",
    descripcion: "Te responde con el saldo de tu tarjeta Bip",
+   disponible: false,
    ejecutar(mensaje, argumentos) {
       // Variables locales del comando.
       console.log(`ARG: ${argumentos}`);

@@ -5,6 +5,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
 	nombre: "avatar",
 	descripcion: "Muestra el avatar del usuario mencionado o el avatar propio",
+	disponible: true,
 	ejecutar(mensaje, argumentos){
 		// Variables para el comando.
 		let mensajeAvatar = new MessageEmbed()

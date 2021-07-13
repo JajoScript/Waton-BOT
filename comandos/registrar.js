@@ -8,6 +8,7 @@ const EsquemaUsuario = require("../colecciones/usuarios.js");
 module.exports = {
 	nombre: "registrar",
 	descripcion: "Te registra en la base de datos!",
+   disponible: true,
 	ejecutar(mensaje, argumentos){
       // Variables del comando.
       let usuarioNick = mensaje.author.username;

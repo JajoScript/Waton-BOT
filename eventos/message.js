@@ -5,17 +5,18 @@ module.exports = {
 	nombre: "message",
 	simple: false,
 	ejecutar(mensaje, cliente) {
+		// Filtro para los mensajes por canal privado.
+		if(mensaje.channel.type === "dm") return;
+
 		// Captura de datos.
 		let contenido = mensaje.content.toLowerCase();
 		let usuarioNombre = mensaje.author.username;
 		let usuarioID = mensaje.author.id;
 		let rolPayaso = mensaje.guild.roles.cache.find((rol) => rol.name === "Payaso");
-		let palabrasBaneadas = ["maricon, mariconcito, trolaso"];
+		let palabrasBaneadas = ["maricon", "mariconcito", "trolaso", "perro joya"];
 
 		console.log(`[BOT][EVENT:${this.nombre}] @${usuarioNombre} : ${contenido}`);
 		
-		
-
 		// Mensajes por defecto.
 		if (contenido.toLowerCase() === "gd"){
 			mensaje.reply("Buenos dias!");
@@ -33,7 +34,7 @@ module.exports = {
 		
 		// Detector de palabras.
 		if (palabrasBaneadas.some(palabra => contenido.includes(palabra))){
-			mensaje.reply("y esa boquita?");
+			mensaje.reply("y esa boquita? 🤮");
 		}
 
 		// Control para el rol de "Payaso".

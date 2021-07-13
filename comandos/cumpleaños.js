@@ -9,6 +9,7 @@ const EsquemaUsuario = require("../colecciones/usuarios.js");
 module.exports = {
    nombre: "cumpleaños",
    descripcion: "Muestra la lista de los cumpleaños más cercanos.",
+   disponible: true,
    async ejecutar(mensaje, argumentos) {
       // Instancias y variables.
       var servidorNombre = mensaje.guild.name;

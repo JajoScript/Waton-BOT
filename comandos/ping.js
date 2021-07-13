@@ -4,6 +4,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
 	nombre: "ping",
 	descripcion: "Te responde con el ping del bot!",
+	disponible: true,
 	ejecutar(mensaje, argumentos){
 		// Variables para el comando.
 		let ping = Math.floor(mensaje.client.ws.ping);

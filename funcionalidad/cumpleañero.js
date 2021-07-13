@@ -55,12 +55,6 @@ class Cumpleañero {
       return diasRestantes;
    }
 
-<<<<<<< HEAD
-   // Constructor.
-   // Getters & Setters.
-   // Destructor.
-}
-=======
    definirHorasRestantes(fecha){
       var tiempoRestante = this.definirTiempoRestante(fecha);
       var horasRestantes = Math.floor((tiempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -73,4 +67,3 @@ class Cumpleañero {
 }
 
 module.exports = Cumpleañero;
->>>>>>> master

@@ -6,7 +6,8 @@ const EsquemaUsuario = require("../colecciones/usuarios.js");
 
 module.exports = {
 	nombre: "cumpleaño",
-	descripcion: "Responde cuantos dias faltan para el CUMpleaños del mencionado.",
+	descripcion: "Responde cuantos dias faltan para el CUMpleaños del mencionado o para el CUMpleaños propio.",
+	disponible: true,
 	ejecutar(mensaje, argumentos) {
 		// Comprobación si se etiqueta a alguien.
 		if (!argumentos || argumentos.length < 1){
