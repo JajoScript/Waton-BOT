@@ -20,6 +20,8 @@ module.exports = {
 		// Mensajes por defecto.
 		if (contenido.toLowerCase() === "gd"){
 			mensaje.reply("Buenos dias!");
+		}else if(contenido.toLowerCase() === "ga"){
+			mensaje.reply("Buenas tardes!");
 		}else if(contenido.toLowerCase() === "gn"){
 			mensaje.reply("Buenas noches!");
 		} else if(contenido.toLowerCase() === "te amo"){
