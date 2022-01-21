@@ -32,6 +32,8 @@ module.exports = {
 			mensaje.channel.send(`Mi creador es <@${usuarios.Jajo.id}>`);
 		} else if(contenido.toLowerCase() === "quien es el mas weon?"){
 			mensaje.reply(`El más weon es el <@${usuarios.Alonso.id}>`);
+		} else if (contenido.toLowerCase() == ":gato:") {
+			mensaje.reply(`:gato:`);
 		}
 		
 		// Detector de palabras.
