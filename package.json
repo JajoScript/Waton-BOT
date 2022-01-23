@@ -13,7 +13,7 @@
 		"bip": "^2.0.2",
 		"discord.js": "^12.5.3",
 		"dotenv": "^10.0.0",
-		"ffmpeg-static": "^4.4.0",
+		"ffmpeg-static": "^4.4.1",
 		"mongoose": "^5.13.9",
 		"opusscript": "^0.0.8",
 		"youtube-search": "^1.1.6",
