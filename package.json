@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"bip": "^2.0.2",
-		"discord.js": "^14.0.0",
+		"discord.js": "^14.11.0",
 		"dotenv": "^10.0.0",
 		"ffmpeg-static": "^4.4.0",
 		"mongoose": "^5.13.9",
